@@ -37,10 +37,14 @@ def openD(dir, sp="\t"):
 	print(num)
 	return num, list
 
-
+def loadData(str):
+	fr = open(str)
+	sArr = [line.strip().split("\t") for line in fr.readlines()]
+	datArr = [[float(s) for s in line[1][1:-1].split(", ")]]
 
 if __name__ == '__main__':
 	dirTrain = "C:\\Users\\cuicui\\Desktop\\transE\\data\\FB15k\\train.txt"
 	tripleNumTrain, tripleListTrain = openD(dirTrain)
 	dirTest = "C:\\Users\\cuicui\\Desktop\\transE\\data\\FB15k\\test.txt"
 	tripleNumTest, tripleListTest = openD(dirTest)
+	dirEntityVector = "C:\\Users\\cuicui\\Desktop\\transE\\result\\entityVector.txt"
