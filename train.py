@@ -7,7 +7,7 @@ class TransE:
 
 
 	#初始化边界值，SGD学习率（步长），降维后的维度，以及距离函数使用的范数
-	def __init__(self, entityList, relationList, tripleList, margin = 1, learningRate = 0.00001, dim = 10, L1 = True):
+	def __init__(self, entityList, relationList, tripleList, margin = 1, learningRate = 0.01, dim = 10, L1 = True):
 		self.margin = margin
 		self.learningRate = learningRate
 		self.dim = dim
@@ -269,9 +269,9 @@ if __name__ == '__main__':
 	tripleNum, tripleList = openTrain(dirTrain)
 
 	print("开始TransE").decode('UTF-8').encode('cp936')
-	transE = TransE(entityList,relationList,tripleList,margin = 1, dim = 100)
+	transE = TransE(entityList,relationList,tripleList,margin = 1, dim = 50)
 	print("TransE初始化").decode('UTF-8').encode('cp936')
 	transE.initialize()
-	transE.transE(15000)
+	transE.transE(1000)
 	transE.writeRelationVector("C:\\Users\\cuicui\\Desktop\\transE\\result\\relationVector.txt")
 	transE.writeEntityVector("C:\\Users\\cuicui\\Desktop\\transE\\result\\entityVector.txt")
